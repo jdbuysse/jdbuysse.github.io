@@ -18,11 +18,14 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
 end
 
+#JB: I commented this out because it wasn't working and I didn't know what it does
+#JD: but check back here if there's an issue?
+
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
-  gem "tzinfo", "~> 1.2"
-  gem "tzinfo-data"
+#  gem "tzinfo", "~> 1.2"
+#  gem "tzinfo-data"
 end
 
 # Performance-booster for watching directories on Windows
