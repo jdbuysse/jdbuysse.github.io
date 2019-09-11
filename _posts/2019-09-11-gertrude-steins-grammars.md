@@ -24,8 +24,7 @@ My methods back then were fairly laborious--I used the Stanford Parser with diff
 
 ![The raw grammar-tagged text from the Stanford parser](static/img/2019-09-11-stein-parsed-tags)
 
-![Output from a Python script I wrote to isolate features from the text and ‘clean’ them by removing tags]
-(static/img/2019-09-11-stein-parse-clean)
+![Output from a Python script I wrote to isolate features from the text and ‘clean’ them by removing tags](static/img/2019-09-11-stein-parse-clean)
 
 For this initial paper, there were some fancier theoretical arguments about digital versus analog ‘reading,’ but the truth is that I was much more interested in seeing if the methods worked than making any specific literary-critical argument about Stein.
 I left the Stein project alone for a while because I wasn’t sure what to do with it. While I certainly saw a lot of potential in the methods I used here, the ability to isolate questions itself wasn’t going to do much for a larger argument about her work. As time went on, there were some remarkable advances in the tools available for grammar parsing that led me to revisit this initial work in the area. I’ll talk more about those in blog posts later this semester. In a lot of ways, what I’m working on now is a more elegant solution to questions I was posing back in 2015. Instead of tagging text files one by one and writing custom regular expressions to reassemble the text in different forms, my current work streamlines the process to make it accessible to anyone with an interest in posing questions about the shape of grammar to a given text. I’ll leave it at that for now, but watch this space for more in the coming months!
