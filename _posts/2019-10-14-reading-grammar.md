@@ -15,6 +15,7 @@ crosspost:
     url: https://scholarslab.lib.virginia.edu/
 ---
 
+> *Cross-posted to the Scholars' Lab Blog at https://scholarslab.lib.virginia.edu/blog/reading-grammar/*
 
 I am not a grammar whiz. I couldn’t tell you off the top of my head what makes a verb transitive, much less how to identify a “nominal subject.” I haven’t taken a linguistics class or really thought all that much about the field past Saussure (the starting point for a lot of 101-level literary theory classes) and Chomsky (the point where mainline literary theory seems to diverge from linguistics). On the spectrum between descriptivism and prescriptivism I’m an apathetic descriptivist. But in writing the last couple chapters of my dissertation, I suddenly found myself brushing up on the basics. I’m taking something that I’ve known by feel for 20 years and trying to understand a bit more about how it’s formalized. One of the tools I’ve been using is not really from linguistics but rather out-of-date writing pedagogy.
 
