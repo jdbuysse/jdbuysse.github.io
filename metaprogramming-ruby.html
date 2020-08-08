@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="author" content="Jordan Buysse" />
+    <meta name="description" content="Personal blog and resume">
+    <link rel="favicon" href="static/img/favicon.ico">
+
+    
+      <title>Metaprogramming and Ruby</title>
+    
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
+
+    <!-- Google Analytics -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69391421-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+  <!-- Main Body-->
+  <body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+    <!-- Navbar header -->
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="vitae.html">RESUME</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+	<div class="blog-post">
+		<h3>
+		  <strong><a href="/metaprogramming-ruby.html">Metaprogramming and Ruby</a></strong>
+		</h3>
+	</div>
+	<div class="blog-title">
+		<h4>
+		May 28, 2020
+			&nbsp;&nbsp;
+			
+			 <span class="label label-success">Ruby</span>
+			
+			 <span class="label label-success">Computer Science</span>
+			
+		</h4>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blogpost">
+			  <p>At Flatiron, we start out with Ruby. I can’t say I love the language on an aesthetic level (implicit returns and the ‘do’ keyword grate on me for some reason), but it was worth this brief foray into Ruby just to see get some exposure to Ruby’s take on metaprogramming. On a conceptual level, metaprogramming refers to processes where languages can read, generate, or modify pieces of themselves. I’m not going to delve into the theoretical stuff here, though. In practice I’ve found this often means blurring the distinction between compilation and runtime, a practice that in its most radical form via Lisp–as Paul Graham says “the whole language is always available”–including all the intermediary bits of in-between computer speak.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup> What this all means for Ruby, in my experience so far, is two things.</p>
+
+<h2 id="monkey-patching">Monkey-patching</h2>
+
+<p>The first is ‘monkey-patching’–the ability to amend methods in Ruby’s default classes on the fly. For example, maybe you’re on island time. You could dig in to Ruby’s default classes and change the definition of the weekend:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module CoreExtensions
+  	 module DateTime
+	  module BusinessDays
+  	   def weekday?
+        !sunday? &amp;&amp; !saturday? &amp;&amp; !friday?
+  	   end
+	 end
+  	end
+end
+</code></pre></div></div>
+
+<p><a href="https://www.justinweiss.com/articles/3-ways-to-monkey-patch-without-making-a-mess/">Thanks to Justin Weiss</a> for the example. There’s not much benefit to doing this via monkey patching, of course, and it’s certainly not how I’d solve the problem in the wild. But this example goes to show how you can build robust packages for Ruby based on modifying core ‘upstream’ classes in the Ruby default library. “Awesome Print” was a popular one for our Mod 1 projects, which runs via modifications of Ruby’s default IRB (aka “interactive Ruby” aka REPL aka Ruby’s read-eval-print loop). “Awesome Print” brings Ruby’s “Pretty Print” to life via full colors and new features. But as the docs say, Awesome Print really is just “exposing their internal structure with proper indentation,” building alongside rather than on top of Ruby’s existing methods.</p>
+<h2 id="metaprogramming-to-define-new-classes-and-methods">Metaprogramming to define new classes and methods</h2>
+<p>The other example I want to talk about very briefly is ActiveRecord, a source of a lot of the ‘magic’ people talk about when they talk about Rails and which, I’d argue, is the key piece of tech that allows the Flatiron curriculum to jump from CLIs to non-templated full-stack web apps so quickly. <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup> There’s way to much to cover on the topic of AR and metaprogramming so I’ll just note one simple example: Active Record’s “Dynamic Finders,” which make ugly database queries into friendly (yes, ‘magic’, feeling) natural language queries. If you have a field for spirit_animal on your User model for example, AR will generate a method called find_by_spirit_animal for free. find_by_ functions are simple plug-and-play templates that insert the field name into a method with everything else defined.
+Metaprogramming! It’s everywhere. Especially in the ‘magic’ parts of Rails magic. I wrote this blog mostly to try and take a nebulous, theoretical concept, and pin it down to a couple of things I’ve done in Ruby. Hope you can find some use for it.</p>
+
+<h2 id="endnotes">Endnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>As a side note, Lisp was the first programming language I ever had someone actually try to teach me, circa 2003, when I was in middle school. I was at a computer camp of some sort—maybe the actual curriculum was learning to build websites in Dreamweaver, or make flash animations, or something? All I really remember was two things. The first was really only wanting to play Age of Empires, which was installed on all the computers. The second was that one of the instructors there taught a mini class on Lisp programming. I remember reading the Lisp docs for some reason, not understanding a thing, especially a cryptic mention of illegal lambda functions, whatever that meant. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>From what I understand, other campuses take a lengthier route through Sinatra other Rack related things first <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+			   <hr>
+			   <div class="related-posts">
+				   <h5>Related Posts</h5>
+				   
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	October 14, 2019
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/reading-grammar.html">Reading Grammar: First Attempts</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	September 11, 2019
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/introducing-gs-grammars.html">Introducing 'Gertrude Stein's Grammars'</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+			   </div>
+			</div>
+		</div>
+	</div>
+	
+
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">© All rights reserved. Powered by <a href="http://jekyllrb.com/">Jekyll</a> and
+            <a href="http://www.github.com/jekyller/sustain">sustain</a> with ♥</p>
+        </div>
+    </div>
+</footer>
+<div class="footer"></div>
+
+
+<!--    <a href="https://github.com/jekyller/sustain"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+    crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="static/js/docs.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

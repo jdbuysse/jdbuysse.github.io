@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="author" content="Jordan Buysse" />
+    <meta name="description" content="Personal blog and resume">
+    <link rel="favicon" href="static/img/favicon.ico">
+
+    
+      <title>Reading Grammar: First Attempts</title>
+    
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
+
+    <!-- Google Analytics -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69391421-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+  <!-- Main Body-->
+  <body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+    <!-- Navbar header -->
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="vitae.html">RESUME</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+	<div class="blog-post">
+		<h3>
+		  <strong><a href="/reading-grammar.html">Reading Grammar: First Attempts</a></strong>
+		</h3>
+	</div>
+	<div class="blog-title">
+		<h4>
+		October 14, 2019
+			&nbsp;&nbsp;
+			
+			 <span class="label label-success">Digital Humanities</span>
+			
+		</h4>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blogpost">
+			  <blockquote>
+  <p><em>Cross-posted to the Scholars’ Lab Blog at https://scholarslab.lib.virginia.edu/blog/reading-grammar/</em></p>
+</blockquote>
+
+<p>I am not a grammar whiz. I couldn’t tell you off the top of my head what makes a verb transitive, much less how to identify a “nominal subject.” I haven’t taken a linguistics class or really thought all that much about the field past Saussure (the starting point for a lot of 101-level literary theory classes) and Chomsky (the point where mainline literary theory seems to diverge from linguistics). On the spectrum between descriptivism and prescriptivism I’m an apathetic descriptivist. But in writing the last couple chapters of my dissertation, I suddenly found myself brushing up on the basics. I’m taking something that I’ve known by feel for 20 years and trying to understand a bit more about how it’s formalized. One of the tools I’ve been using is not really from linguistics but rather out-of-date writing pedagogy.</p>
+
+<p>In <a href="https://scholarslab.lib.virginia.edu/blog/introducing-gs-grammars/">my first post</a> I gave some backstory for my fellowship project studying grammar structures in Gertrude Stein. I’m going to use this post to show how I’ve implemented one piece of the puzzle. What I think is really interesting about this example, from a digital humanities perspective, is the way that computation can resurrect some old forms or inquiry that people have neither the time nor inclination for. I’d struggle mightily to diagram a single sentence by hand, but I’ve generated hundreds of diagrams while writing about Stein. They have changed how I read them. With all the big claims about what machine learning does to our experience of the world here’s a very minor, very specific one: reconstructing an old pedagogical task in order to inhabit an old way of thinking about composition.</p>
+
+<p>Like I mentioned above, I haven’t spent a lot of time thinking about how grammar structures are formalized. This is probably in large part because I’ve been word-processing digitally more or less since I started writing. I’ve always had those squiggly underlines to tell me when I had something wrong with my grammar. From the late 1800s to the 1960s or so when the practice began to fall out of fashion, American schools had students drill “sentence diagrams” in order to learn writing and the basic tenets of grammar.<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<h2 id="reviving-the-grammar-tree">Reviving the Grammar Tree</h2>
+
+<p>So what do sentence diagrams actually look like? There’s no one standard, even though an 1877 textbook by Alonzo Reed and Brainerd Kellogg was the most influential in writing pedagogy of the late 19th century. A lot of the hand-drawn diagrams look something like this:</p>
+
+<p><img src="/static/post-media/2019-10-14-reading-grammar/RK_diagram.gif" alt="An image from the 1877 Reed Kellogg textbook *English for Use*" /></p>
+
+<p>It’s safe to assume Stein would have been creating diagrams that looked similar. I’ve been generating diagrams using the natural language processing package SpaCy for Python and a module called <a href="https://spacy.io/universe/project/explacy">explacy</a>. Explacy ‘prints’ out grammar trees in a monospaced font as a low-tech way of generating grammar diagrams of various length.</p>
+
+<p><img src="/static/post-media/2019-10-14-reading-grammar/rose.png" alt="A tree diagram with spaCy and explacy" /></p>
+
+<p>For a while I was using these tools locally, but eventually it seemed worth finding a way to put them online. You can try out a (very rough!) demo of the sentence parser ‘<a href="http://grammar.click/">here</a>’.</p>
+
+<p><img src="/static/post-media/2019-10-14-reading-grammar/diag1.png" alt="My online demo of spaCy + explacy." /></p>
+
+<p>I started thinking about sentence diagrams because they appear to have been quite formative to the young Stein. If other students dreaded the rote (and as it turns out fairly useless) “grammar school” task, Stein loved the systematic approach to language:</p>
+
+<blockquote>
+  <p>When you are at school and learn grammar grammar is very exciting. 
+I really do not know that anything has ever been more exciting than
+diagramming sentences. I suppose other things may be more exciting 
+to others when they are at school but to me undoubtedly when I was at 
+school the really completely exciting thing was diagramming sentences 
+and that has been to me ever since the one thing that has been 
+completely exciting and completely completing. I like the feeling the 
+everlasting feeling of sentences as they diagram themselves. 
+(<em>Lectures in America</em>  210-211)</p>
+</blockquote>
+
+<p>When I use modern natural language processing technologies to generate sentence diagrams, I get to share in Stein’s act of “completely completing” an analysis the skeleton of a sentence. Neither do I feel like I’m missing too much by automating the process–even Stein, who was drawing the diagrams by hand, phrases the activity as something inherent in the language–sentences “diagram themselves.”</p>
+
+<p>Participating in the act of diagramming gives me not only a glimpse of how Stein and her American contemporaries would have been trained to think about composition, but also a better technical vocabulary for closely reading the mechanics of Steinese. William H. Gass once wrote about seven pages closely reading Stein’s use of the word ‘the’ in a single sentence from Stein’s <em>Three Lives</em>. It’s even an interesting read! Gass’ eye for the subtleties of ‘the’ is a skill that only comes with a super-analytic approach towards language mechanics, drilled from childhood. I frankly don’t have the stamina or skill set for that sort of reading, but by crunching the numbers with a computer rather than working by hand, I can at least borrow the correct terminology. For as often as digital humanities gets branded as being about new methods, sometimes it’s worth simply resurrecting the old. You learn something about the linguistic world your subjects lived in, and pick up some maneuvers of your own along the way.</p>
+
+<h2 id="endnotes">Endnotes</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Grammar was always important to pedagogy, a component of the lower “trivium” within the classical hierarchy of the liberal arts, alongside logic and rhetoric. But Americans, apparently, <a href="https://www.npr.org/sections/ed/2014/08/22/341898975/a-picture-of-language-the-fading-art-of-diagramming-sentences">took the idea of studying grammar quite literally.</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+			   <hr>
+			   <div class="related-posts">
+				   <h5>Related Posts</h5>
+				   
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	May 28, 2020
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/metaprogramming-ruby.html">Metaprogramming and Ruby</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	September 11, 2019
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/introducing-gs-grammars.html">Introducing 'Gertrude Stein's Grammars'</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+			   </div>
+			</div>
+		</div>
+	</div>
+	
+
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">© All rights reserved. Powered by <a href="http://jekyllrb.com/">Jekyll</a> and
+            <a href="http://www.github.com/jekyller/sustain">sustain</a> with ♥</p>
+        </div>
+    </div>
+</footer>
+<div class="footer"></div>
+
+
+<!--    <a href="https://github.com/jekyller/sustain"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+    crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="static/js/docs.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="author" content="Jordan Buysse" />
+    <meta name="description" content="Personal blog and resume">
+    <link rel="favicon" href="static/img/favicon.ico">
+
+    
+      <title>Introducing 'Gertrude Stein's Grammars'</title>
+    
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/syntax.css" />
+
+    <!-- Google Analytics -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69391421-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </head>
+  <!-- Main Body-->
+  <body>
+  <!-- Wrap all page content here -->
+  <div id="wrap">
+    <!-- Navbar header -->
+    <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="vitae.html">RESUME</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+	<div class="blog-post">
+		<h3>
+		  <strong><a href="/introducing-gs-grammars.html">Introducing 'Gertrude Stein's Grammars'</a></strong>
+		</h3>
+	</div>
+	<div class="blog-title">
+		<h4>
+		September 11, 2019
+			&nbsp;&nbsp;
+			
+			 <span class="label label-success">Digital Humanities</span>
+			
+		</h4>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="blogpost">
+			  <blockquote>
+  <p><em>Cross-posted to the Scholars’ Lab Blog at https://scholarslab.lib.virginia.edu/blog/introducing-gs-grammars/</em></p>
+</blockquote>
+
+<p>Hi! I’m Jordan Buysse, a sixth year PhD candidate in the English department and one of the Scholars’ Lab fellows this year. I work on modern and contemporary literature, media studies, and text analysis. My dissertation is about the relationship between literary works and information. In math and computer science, information refers to a type of communication that has nothing to do with meaning. But this definition is at odds with the colloquial sense of the word and its longer etymological history, which is about in<em>form</em>ing people–shaping the mind. As it turns out, these two opposite senses of the term actually have a lot to say about what goes on when we read different types of literary works.
+So far I’ve written chapters about novels that work like search engines and a poet who writes all of her work algorithmically. For my fellowship project and the associated chapter, I’m working on the modernist poet Gertrude Stein. My work with Stein is a little bit different because, while the other chapters have been heavily informed by ‘data’-centric approaches to literary studies, it is the first chapter where I am doing significant computational work for the sake of my argument. I’m going to get into how that works in future blog posts, but here I actually want to look back at how my thinking has developed.
+My work with Stein starts a long time ago in my first year of grad school. I was really interested in some of the natural language processing tools that were being developed at the time, in particular things like the <a href="https://nlp.stanford.edu/software/lex-parser.shtml">Stanford parser</a> that could determine and tag the parts of speech for a given text.</p>
+
+<p><img src="static/img/2019-09-11-stanford-parser-diagrams.png" alt="Two diagrams I generated with the Stanford Parser in 2015" /></p>
+
+<p>I presented an early incarnation of this research at the 2015 ACLA conference under the title “Tender Buttons and Regular Expressions.” The earlier paper on Tender Buttons mostly revolved around Stein sentences that were actually questions although they contained no question mark. I used this specific case to demonstrate that, while these questions were invisible to “bag of words” tokenization, they were quite easy to track using grammar parsers and regular expressions. Grammar parsing also proved to eliminate a large number of false positives, flagging a sentence like “what is the wind, what is it” while passing over sentences like “A large box is handily made of what is necessary to replace any substance.” The increased technical difficulty of using grammar parsers over n-grams or regular expressions is justified by these edge cases, which are abundant in “Steinese” 
+My methods back then were fairly laborious–I used the Stanford Parser with different pre-trained models to tag the initial text, and then adapted individual Python scripts to spit out ‘cleaned’ versions of the text according to different features. Below you can see screenshots of .txt files with the initial markup and with extracted matching features.</p>
+
+<p><img src="static/img/2019-09-11-stein-parsed-tags.png" alt="The raw grammar-tagged text from the Stanford parser" /></p>
+
+<p><img src="static/img/2019-09-11-stein-parse-clean.png" alt="Output from a Python script I wrote to isolate features from the text and ‘clean’ them by removing tags" /></p>
+
+<p>For this initial paper, there were some fancier theoretical arguments about digital versus analog ‘reading,’ but the truth is that I was much more interested in seeing if the methods worked than making any specific literary-critical argument about Stein.
+I left the Stein project alone for a while because I wasn’t sure what to do with it. While I certainly saw a lot of potential in the methods I used here, the ability to isolate questions itself wasn’t going to do much for a larger argument about her work. As time went on, there were some remarkable advances in the tools available for grammar parsing that led me to revisit this initial work in the area. I’ll talk more about those in blog posts later this semester. In a lot of ways, what I’m working on now is a more elegant solution to questions I was posing back in 2015. Instead of tagging text files one by one and writing custom regular expressions to reassemble the text in different forms, my current work streamlines the process to make it accessible to anyone with an interest in posing questions about the shape of grammar to a given text. I’ll leave it at that for now, but watch this space for more in the coming months!</p>
+
+
+			   <hr>
+			   <div class="related-posts">
+				   <h5>Related Posts</h5>
+				   
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	May 28, 2020
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/metaprogramming-ruby.html">Metaprogramming and Ruby</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+						<div class="row">
+							 <div class="col-sm-4 col-md-4 col-lg-4">
+								 <h6 style="text-align: right">
+								 	October 14, 2019
+								 </h6>
+							 </div>
+							 <div class="col-sm-8 col-md-8 col-lg-8">
+								 <h6 style="text-align: left">
+								 	<strong><a href="/reading-grammar.html">Reading Grammar: First Attempts</a></strong>
+								 </h6>
+							 </div>
+						</div>
+					
+			   </div>
+			</div>
+		</div>
+	</div>
+	
+
+</div>
+
+
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted">© All rights reserved. Powered by <a href="http://jekyllrb.com/">Jekyll</a> and
+            <a href="http://www.github.com/jekyller/sustain">sustain</a> with ♥</p>
+        </div>
+    </div>
+</footer>
+<div class="footer"></div>
+
+
+<!--    <a href="https://github.com/jekyller/sustain"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+    crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="static/js/docs.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
